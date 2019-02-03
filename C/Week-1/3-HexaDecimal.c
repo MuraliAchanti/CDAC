@@ -55,7 +55,7 @@ int main()
     val1 = val1 | temp_bits;
     printf("The number of set bits for the original number %d,%#X is - %d\n",og,og,count);
     printf("Swapping the Bytes: the original number is %#X to %#X - %d\n",og,val2,val2);
-    printf("After Rotating 4 bits %#X to %#X - %d",og,val1,val1);
+    printf("After Rotating 4 bits %#X to %#X - %d\n",og,val1,val1);
     //1100101011111110 - 0xCAFE - 51966
     //1111111011001010 - 0xFECA - 65226
     //1110110010101111 - 0xECAF - 60591

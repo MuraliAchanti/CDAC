@@ -2,17 +2,20 @@
 #include<math.h>
 void BinaryConvert(int num)
 {   
-    int bits[5];
+    int length;
+    length = log2(num) + 1;
     int i;
-    for(i=0;i<5;i++)
-        bits[i] = 0;
-    for(i=0;i<5;i++)
+    int bits[length];
+    for(i=0;i<length;i++)
     {
-        bits[i] = num%2;
+        bits[i] = num%2; 
         num = num/2;
     }
-    for(i=4;i>=0;i--)
+    printf("The Binary Representation is - ");
+    for(i=length-1;i>=0;i--)
+    {
         printf("%d",bits[i]);
+    }
 }
 int main()
 {

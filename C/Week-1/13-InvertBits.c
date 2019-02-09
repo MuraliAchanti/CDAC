@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<math.h>
-void InvertBits(int n,int p,int b)
+/*void InvertBits(int n,int p,int b)
 {
     int i;
     int size = log2(n)+1;
@@ -31,10 +31,16 @@ void InvertBits(int n,int p,int b)
         printf("%d",og[i]); 
     printf("\n");
     return;
-}
+}*/
 int main()
 {
-    int num =  51966;
+    int og =  51966;
     //scanf("%d",&num);
-    InvertBits(num,7,1);
+    int p = 5;
+    int b = 2;
+    int num = pow(2,2) - 1;
+    num = num << (p-b);
+    int temp =  num ^ og;
+    printf("%X\n",og);
+    printf("%X",temp);
 }

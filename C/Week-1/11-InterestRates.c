@@ -17,7 +17,7 @@ void Interest(int amount)
     printf("Simple Interest is %LF\n",si);
     for(i=0;i<5;i++)
     {
-        ci = (amount*(1 + (0.05/10)));
+        ci = (amount*(1 + (0.05/time[i])));
         ci = ci*pow(ci,time[i]);
         printf("Coumpund Interest for yearly %d times is %LF\n",time[i],ci);
     }

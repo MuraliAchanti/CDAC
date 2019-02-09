@@ -59,4 +59,31 @@ int main()
     //1100101011111110 - 0xCAFE - 51966
     //1111111011001010 - 0xFECA - 65226
     //1110110010101111 - 0xECAF - 60591
+
+    //***********1st Question*************
+    /*
+    int val = 0XCAFE;
+    int temp =  0XF000;
+    int res = (val&temp);
+    res = res>>12;
+    int i = 0;
+    int count = 0;
+    for(i=0;i<4;i++)
+    {
+        if((res%2)==1)
+            count++;
+        res = res/2;
+    }
+    printf("%d",count);
+    */
+   //************2nd Question
+   /*
+   int val = 0XCAFE;
+   val = ((val << 8)|(val>>8)) & 0XFFFF;
+   printf("%X",val);
+   */
+  //*************3rd Question
+  /*int val = 0XCAFE;
+  val = ((val<<12) | (val>>4)) & 0XFFFF;
+  printf("%X",val);*/
 }

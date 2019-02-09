@@ -1,10 +1,6 @@
 #include<stdio.h>
+#include<string.h>
 int main()
 {
-    char *p;
-    int h = 20;
-    int a;
-    p = &h;
-    a = *p;
-    printf("%d %c",*p,a);    
+    char s[100] = "arsenal";
 }

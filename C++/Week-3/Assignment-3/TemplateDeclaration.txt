@@ -1,0 +1,96 @@
+Examples of Defining Template Member Functions
+/************************************************************************
+The following three examples illustrate the three ways to define template member functions:
+Method 1                                                                        
+************************************************************************/
+
+      template <class T> class key
+      {
+      public:
+            void f(T);
+      };
+      void key<char>::f(char) { /* ... */ }
+      void key<int>::f(int ) { /* ... */ }
+
+      void main()
+      {
+            int i = 9;
+            key< int> keyobj;
+            keyobj.f(i);
+      }
+/************************************************************************
+Method 2                                                                    
+************************************************************************/
+
+      template <class T> class key
+      {
+      public:
+            void f(T);
+      };
+      template <class T> void key <T>::f(T) { /* ... */ }
+
+      void main()
+      {
+            int i = 9;
+            key< int> keyobj;
+            keyobj.f(i);
+      }
+
+/************************************************************************
+Method 3 
+************************************************************************/
+      template <class T> class key
+      {
+      public:
+            void f(T) { /* ... */ }
+      };
+
+      void main()
+      {
+            int i = 9;
+            key< int> keyobj;
+            keyobj.f(i);
+      }
+
+******************************************************************************************
+
+For friend function declarations in Template classes
+
+*********** METHOD 1 **********************
+
+template <typename T>
+class Test {
+   template <typename U>      // all instantiations of this template are my friends
+   friend std::ostream& operator<<( std::ostream&, const Test<U>& );
+};
+template <typename T>
+std::ostream& operator<<( std::ostream& o, const Test<T>& ) {
+   // Can access all Test<int>, Test<double>... regardless of what T is
+}
+
+******************** METHOD 2 ******************
+
+template <typename T>
+class Test {
+   friend std::ostream& operator<<( std::ostream& o, const Test& t ) {
+      // can access the enclosing Test. If T is int, it cannot access Test<double>
+   }
+};
+
+*********************METHOD 3 ********************
+
+// Forward declare both templates:
+template <typename T> class Test;
+template <typename T> std::ostream& operator<<( std::ostream&, const Test<T>& );
+
+// Declare the actual templates:
+template <typename T>
+class Test {
+   friend std::ostream& operator<< <T>( std::ostream&, const Test<T>& );
+};
+// Implement the operator
+template <typename T>
+std::ostream& operator<<( std::ostream& o, const Test<T>& t ) {
+   // Can only access Test<T> for the same T as is instantiating, that is:
+   // if T is int, this template cannot access Test<double>, Test<char> ...
+}

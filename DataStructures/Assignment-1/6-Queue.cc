@@ -19,6 +19,7 @@ class Queue
     {
         queue.front = -1;
         queue.rear = -1;
+        queue.size  =  size;
         queue.arr = new int[size];
     }
     bool OverFlow()
@@ -58,7 +59,7 @@ class Queue
     {   
         int x = -999;
         if(queue.front == -1 && queue.rear == -1)
-        {   
+        {
             cout<<"Underflow\n";
         }
         else
@@ -91,14 +92,15 @@ class Queue
 }; 
 int main()
 {
-    Queue q(10);
+    Queue q(3);
     q.Enqueue(1);
     q.Enqueue(2);
     q.Enqueue(3);
     q.Enqueue(4);
     q.Display();
-    q.Dequeue();
-    q.Dequeue();
-    q.Dequeue();
+    cout<<q.Dequeue();
+    cout<<q.Dequeue();
+    cout<<q.Dequeue();
+    q.Enqueue(7);
     q.Display();
 }

@@ -49,7 +49,7 @@ class _Stack_
             int x = -999;
             if(stack.top == -1)
             {
-                cout<<"Stack Empty";
+                //cout<<"Stack Empty";
                 return x;
             }
             x = stack.elements[stack.top--];
@@ -94,47 +94,66 @@ int Precedence(char x)
     else   
         return 1;
 }
+void reverse(char *temp)
+{   
+    int n = strlen(temp);
+    for(int i = 0,j = n-1;i<=(n/2);i++,j--)
+    {
+        char t = temp[i];
+        temp[i] = temp[j];
+        temp[j] = t;
+    }
+}
 int main()
 {
     char temp[100];
     cout<<"Enter the string";
     cin>>temp;
+    _Stack_ s(20);
     char result[100];
-    _Stack_ s(10); 
-    int curr = 0;
-    char ch;
-    for(int i = 0;i<strlen(temp);i++)
+    reverse(temp);
+    int k = 0;
+    for(int i=0;i<strlen(temp);i++)
     {
-        ch = temp[i];
+        char ch = temp[i];
         if(isdigit(ch) || isalpha(ch))
-        {
-            cout<<ch;
-        }
-        else if(s.isEmpty())
         {   
-            //cout<<"1 - "<<ch<<"\n";
+            result[k++] = ch;
+        }
+        else if(ch == ')')
+        {
             s.Push(ch);
         }
-        else if(Precedence(ch)>Precedence(s.Peek()))
-        {   
-            //cout<<"2 - "<<ch<<"\n"; 
-            s.Push(ch);
-        }
-        else
+        else if(ch == '(')
         {
-            while(Precedence(ch)<=Precedence(s.Peek()))
-            {   
-                //cout<<"3 - "<<ch<<"\n";
-                cout<<s.Pop();
+            while(s.Peek() != ')')
+            {
+                result[k++] = s.Pop();
             }
-            //cout<<"4 - "<<ch<<"\n";
-            s.Push(ch);
+            s.Pop();
         }
+       else if(s.isEmpty())
+       {
+           s.Push(ch);
+       }
+       else if(Precedence(ch)>Precedence(s.Peek()))
+       {
+           s.Push(ch);
+       }
+       else
+       {
+           while(Precedence(ch)<=Precedence(s.Peek()))
+           {
+              result[k++] = s.Pop(); 
+           }
+           s.Push(ch);
+       }
     }
     while(!s.isEmpty())
-    {   
-       //cout<<"5 - "<<ch<<"\n";
-        cout<<s.Pop();
+    {
+        result[k++] = s.Pop();
     }
+    result[++k] ='\0';
+    reverse(result);
+    cout<<result;
 } 
-

@@ -49,7 +49,7 @@ class _Stack_
             int x = -999;
             if(stack.top == -1)
             {
-                cout<<"Stack Empty";
+                //cout<<"Stack Empty";
                 return x;
             }
             x = stack.elements[stack.top--];
@@ -110,6 +110,20 @@ int main()
         {
             cout<<ch;
         }
+        else if(ch == '(')
+        {   
+            //cout<<"2 - "<<ch<<"\n";
+            s.Push(ch);
+        }
+        else if(ch == ')')
+        {
+            while(s.Peek()!='(')
+            {   
+                //cout<<"3 - "<<ch<<"\n";
+                cout<<s.Pop();
+            }
+            s.Pop();
+        }
         else if(s.isEmpty())
         {   
             //cout<<"1 - "<<ch<<"\n";
@@ -117,24 +131,23 @@ int main()
         }
         else if(Precedence(ch)>Precedence(s.Peek()))
         {   
-            //cout<<"2 - "<<ch<<"\n"; 
+            //cout<<"4 - "<<ch<<"\n"; 
             s.Push(ch);
         }
         else
         {
             while(Precedence(ch)<=Precedence(s.Peek()))
             {   
-                //cout<<"3 - "<<ch<<"\n";
+                //cout<<"5 - "<<ch<<"\n";
                 cout<<s.Pop();
             }
-            //cout<<"4 - "<<ch<<"\n";
+            //cout<<"6 - "<<ch<<"\n";
             s.Push(ch);
         }
     }
     while(!s.isEmpty())
     {   
-       //cout<<"5 - "<<ch<<"\n";
+       //cout<<"7 - "<<ch<<"\n";
         cout<<s.Pop();
     }
 } 
-

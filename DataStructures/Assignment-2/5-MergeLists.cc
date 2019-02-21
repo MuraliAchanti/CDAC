@@ -1,10 +1,10 @@
-#include<iostream>  
+#include<iostream>
 using namespace std;
 struct Node
 {
     int data;
     struct Node *next;
-};
+}*new_start;
 void Print(struct Node *s);
 class SLL
 {
@@ -199,7 +199,7 @@ class SLL
         if(start != NULL)
             Print(start); 
     }  
-    ~SLL()
+    /*~SLL()
     {
         struct Node *temp;
         while(start!=NULL)
@@ -208,7 +208,9 @@ class SLL
             start = temp->next;
             delete temp; 
         }
-    }
+    }*/
+    friend void MergeLists(SLL &s1,SLL &s2); 
+    friend void Push(struct Node *new_start,struct Node *element);
 };
 void Print(struct Node *curr)
 {   
@@ -223,25 +225,94 @@ void Print(struct Node *curr)
     {
         return;
     }
-    
+}
+void Push(struct Node *element)
+{
+    //cout<<element;
+    if(new_start == NULL)
+    {
+        new_start = element; 
+        element->next = NULL;  
+    }
+    else
+    {
+        struct Node *curr;
+        curr = new_start;
+        while(curr->next != NULL)
+        {
+            curr = curr->next;
+        }   
+        curr->next = element; 
+        element->next = NULL;
+    }
+}
+void MergeLists(SLL &s1,SLL &s2)
+{   
+    struct Node *curr1,*curr2; 
+    curr1 = s1.start;
+    curr2 = s2.start;  
+    if(curr1==NULL)
+        s2.Traverse_Forward();
+    else if(curr2==NULL)
+        s1.Traverse_Forward(); 
+    else
+    {   
+        while(curr1!=NULL && curr2!=NULL)  
+        {   
+            //cout<<"aaa"<<endl;
+            if(curr1->data>curr2->data)   
+            {   
+                struct Node *temp;
+                temp = curr2->next;
+                Push(curr2);
+                curr2 = temp;   
+            }
+            else
+            {   struct Node *temp;
+                temp = curr1->next;
+                Push(curr1);
+                curr1 = temp; 
+            }  
+        }  
+        //cout<<"new-start"<<new_start<<endl;
+        while(curr1!=NULL)
+        {   
+            //cout<<"aaa"<<endl;
+            struct Node *temp;
+            temp = curr1->next;
+            Push(curr1);
+            curr1 = temp; 
+        }
+        while(curr2!=NULL)  
+        {   
+            //cout<<"aaa"<<endl;
+            struct Node *temp; 
+            temp = curr2->next;
+            Push(curr2);
+            curr2 = temp;
+        }
+    }
+    //cout<<new_start;
+    //s1.start = new_start;
+    //s1.Traverse_Forward();
 }
 int main()
 {
-    SLL s;
-    s.Insert_First(10);
-    s.Insert_After(10,20); 
-    s.Traverse_Forward();
-    s.Delete_Specific(10);
-    s.Traverse_Forward();
-    s.Insert_Before(20,10);
-    s.Traverse_Forward();
-    s.Insert_After(20,30);
-    s.Traverse_Forward();
-    s.Insert_Last(40);
-    s.Traverse_Forward();
-    s.Traverse_Backward();
-    s.Delete_First();
-    s.Traverse_Forward();
-    s.Delete_Last(); 
-    s.Traverse_Forward();
+    SLL s1,s2;
+    s1.Insert_First(50);
+    s1.Insert_First(40);
+    s1.Insert_First(30);
+    s1.Insert_First(10);
+    s2.Insert_First(90);
+    s2.Insert_First(70);
+    s2.Insert_First(50);
+    s2.Insert_First(20);
+    MergeLists(s1,s2);
+    struct Node *temp;
+    temp = new_start;
+    while(temp != NULL)
+    {
+        cout<<temp->data<<endl;
+        temp = temp->next;
+    }
 }

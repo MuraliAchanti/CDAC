@@ -110,17 +110,20 @@ class SLL
         }
     } 
     //DELETE OPERATIONS
-    void Delete_First()
+    int Delete_First()
     {
         if(start == NULL)
         {
             cout<<"List Empty";
-            return;
+            return -99; 
         }
         struct Node *temp;
+        int data;
         temp = start;
+        data =  temp->data;
         start = temp->next;
         delete temp;
+        return data;
     }
     void Delete_Last()
     {   
@@ -184,7 +187,7 @@ class SLL
         }
         else
         {   
-            cout<<"LIST ELEMENTS ARE"<<endl;
+            cout<<"Queue ELEMENTS ARE"<<endl;
             curr = start;
             while(curr != NULL)
             {   
@@ -225,23 +228,44 @@ void Print(struct Node *curr)
     }
     
 }
+class Queue
+{
+    SLL queue;
+    public:
+    Queue()
+    {
+        cout<<"Queue Created";
+    }
+    void Enqueue(int ele)
+    {   
+        cout<<"Element Inserted"<<endl; 
+        queue.Insert_Last(ele);
+    }
+    int Dequeue()
+    {
+        cout<<"Dequeued Element is";
+        return queue.Delete_First(); 
+    }
+    void Display()
+    {
+        queue.Traverse_Forward();
+    }
+};
 int main()
 {
-    SLL s;
-    s.Insert_First(10);
-    s.Insert_After(10,20); 
-    s.Traverse_Forward();
-    s.Delete_Specific(10);
-    s.Traverse_Forward();
-    s.Insert_Before(20,10);
-    s.Traverse_Forward();
-    s.Insert_After(20,30);
-    s.Traverse_Forward();
-    s.Insert_Last(40);
-    s.Traverse_Forward();
-    s.Traverse_Backward();
-    s.Delete_First();
-    s.Traverse_Forward();
-    s.Delete_Last(); 
-    s.Traverse_Forward();
+    Queue q;
+    q.Enqueue(1);
+    q.Enqueue(2);
+    q.Enqueue(3);
+    q.Enqueue(4);
+    q.Display();
+    cout<<q.Dequeue();
+    cout<<q.Dequeue();
+    cout<<q.Dequeue();
+    q.Enqueue(7);
+    q.Display();
+    cout<<q.Dequeue();
+    q.Display();
+    cout<<q.Dequeue();
+    cout<<q.Dequeue();
 }

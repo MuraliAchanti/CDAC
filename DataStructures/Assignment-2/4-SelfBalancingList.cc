@@ -1,4 +1,4 @@
-#include<iostream>  
+#include<iostream>
 using namespace std;
 struct Node
 {
@@ -194,6 +194,31 @@ class SLL
         }
     }
     friend void Print(struct Node *s);
+    void SelfOrganizeList(int key) 
+    {
+    if(start == NULL)
+    {
+        cout<<"Empty List"<<endl;
+        return;
+    }
+    struct Node *curr;
+    curr = start; 
+    while(curr->next!=NULL && curr->next->data!=key)
+    {
+        curr = curr->next; 
+    }
+    if(curr == NULL)
+    {
+        cout<<"Element Not Found"<<endl;
+    }
+    else
+    {
+        struct Node *firstelement =  curr->next; 
+        curr->next = firstelement->next;
+        firstelement->next = start;
+        start = firstelement; 
+    }
+    }
     void Traverse_Backward()
     {   
         if(start != NULL)
@@ -209,6 +234,7 @@ class SLL
             delete temp; 
         }
     }
+
 };
 void Print(struct Node *curr)
 {   
@@ -229,19 +255,12 @@ int main()
 {
     SLL s;
     s.Insert_First(10);
-    s.Insert_After(10,20); 
-    s.Traverse_Forward();
-    s.Delete_Specific(10);
-    s.Traverse_Forward();
-    s.Insert_Before(20,10);
-    s.Traverse_Forward();
-    s.Insert_After(20,30);
-    s.Traverse_Forward();
+    s.Insert_After(10,20);
+    s.Insert_Last(30);
     s.Insert_Last(40);
-    s.Traverse_Forward();
-    s.Traverse_Backward();
-    s.Delete_First();
-    s.Traverse_Forward();
-    s.Delete_Last(); 
+    s.Insert_Last(50);
+    s.SelfOrganizeList(30);
+    s.Traverse_Forward(); 
+    s.SelfOrganizeList(40);
     s.Traverse_Forward();
 }

@@ -5,23 +5,16 @@ void Rearrange(int *arr,int n)
     min = 0;
     int i,j,temp;
     i = 0;
-    j = 0;
-    int flag = 0;
-    while(i<n)
+    j = -1;
+    for(i=0;i<n;i++)
     {
-        if(arr[i]>0 && flag == 0)
-        {
-            j = i;
-            flag = 1;
-        }
-        else if(flag == 1 && arr[i] < 0)
-        { 
-            temp = arr[i];
-            arr[i] =  arr[j];
+        if(arr[i]<0)
+        {   
+            j++;
+            int temp = arr[i];
+            arr[i] = arr[j]; 
             arr[j] = temp;
-            j = j+1;
         }
-        i++;
     }
     for(i=0;i<n;i++)
         printf("%d ",arr[i]);

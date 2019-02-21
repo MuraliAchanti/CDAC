@@ -110,17 +110,20 @@ class SLL
         }
     } 
     //DELETE OPERATIONS
-    void Delete_First()
+    int Delete_First()
     {
         if(start == NULL)
         {
             cout<<"List Empty";
-            return;
+            return -999;
         }
+        int data;
         struct Node *temp;
         temp = start;
+        data = temp->data;
         start = temp->next;
         delete temp;
+        return data;
     }
     void Delete_Last()
     {   
@@ -174,6 +177,19 @@ class SLL
             delete(temp);
         }
     }
+    int Display_First()
+    {
+        if(start == NULL)
+        {
+            cout<<"Empty"<<endl;
+            return -99;
+        }
+        else
+        {
+            return start->data;
+        }
+        
+    }
     void Traverse_Forward()
     {
         struct Node *curr;
@@ -225,23 +241,47 @@ void Print(struct Node *curr)
     }
     
 }
+class Stack
+{
+    SLL top;
+    public:
+    Stack()
+    {
+        cout<<"Stack Created"; 
+    } 
+    void Push(int ele)
+    {   
+        cout<<"Element Inserted";
+        top.Insert_First(ele);
+    }
+    int Pop()
+    {
+        cout<<"Element Popped";
+        int popped_element = top.Delete_First();
+        return popped_element;
+    }
+    int Peek()
+    {
+        cout<<"Top Element is"<<endl;
+        return top.Display_First();
+    }
+    void Display()
+    {
+        //cout<<"Stack Elements are"<<endl;
+        top.Traverse_Forward();
+    }
+};
 int main()
 {
-    SLL s;
-    s.Insert_First(10);
-    s.Insert_After(10,20); 
-    s.Traverse_Forward();
-    s.Delete_Specific(10);
-    s.Traverse_Forward();
-    s.Insert_Before(20,10);
-    s.Traverse_Forward();
-    s.Insert_After(20,30);
-    s.Traverse_Forward();
-    s.Insert_Last(40);
-    s.Traverse_Forward();
-    s.Traverse_Backward();
-    s.Delete_First();
-    s.Traverse_Forward();
-    s.Delete_Last(); 
-    s.Traverse_Forward();
+    Stack s;
+    s.Push(10);
+    s.Push(20);
+    s.Push(30);
+    s.Display();
+    cout<<s.Pop();
+    cout<<s.Pop();
+    cout<<s.Pop();
+    s.Peek();
+    s.Pop();
+    s.Display();
 }

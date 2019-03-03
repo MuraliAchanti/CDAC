@@ -1,26 +1,28 @@
 #include<iostream>
 using namespace std;
-void ExpandString(char *CompressedString)
+char* ExpandString(char *CompressedString)
 {   
+    char *expanded = NULL;
     int len = strlen(CompressedString);
     if(CompressedString[len -1] == '-' || CompressedString[0] == '-')
     {
         cout<<"Invalid String"<<endl;
+        return NULL;
     }
-    else if(1)
+    if(1)
     {
         for(int i=0;i<len;i++)
         {
             if(CompressedString[i] == '-' && CompressedString[i+1] == '-')
             {
                 cout<<"Invalid String"<<endl;
-                return;
+                return NULL;
             }
         }
     }
-    else    
+    if(1)  
     {
-        char expanded[100];
+        expanded = new char[100];
         int i;
         int k = 0;
         for(i=0;i<strlen(CompressedString);i++)
@@ -36,6 +38,12 @@ void ExpandString(char *CompressedString)
                     expanded[k] = j;
                 }
                 }
+                else
+                {
+                    cout<<"Invalid String"<<endl;
+                    return NULL;
+                }
+                
             }
             else
             {
@@ -44,12 +52,19 @@ void ExpandString(char *CompressedString)
             }   
         }
     }
-    
+    return expanded;
 }
 int main()
 {
     char ShortHandString[100];
     cout<<"Enter the String"<<endl;
     cin>>ShortHandString;
-    ExpandString(ShortHandString);
+    char *output = ExpandString(ShortHandString);
+    if(output!=NULL)
+        cout<<"Expanded String is - "<<output;
+    else
+    {
+        cout<<"Please Run Again";
+    }
+    
 }

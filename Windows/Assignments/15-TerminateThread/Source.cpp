@@ -9,9 +9,10 @@ int main()
 	char content[100];
 	SECURITY_ATTRIBUTES sa;
 	sa.bInheritHandle = TRUE;
+	sa.lpSecurityDescriptor = NULL;
 	cout << "Enter the parameter to be passed to thread" << endl;
 	cin >> content;
-	hThread = CreateThread(NULL, 0, ThreadFunction, content, 0, &dwThreadId);
+	hThread = CreateThread(&sa,0, ThreadFunction, content, 0, &dwThreadId);
 	if (hThread == NULL)
 		cout << "Could not create a Thread" << endl;
 	else

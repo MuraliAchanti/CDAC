@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4E0F7ACD-0B4B-4008-A48C-6FF91D734834}</ProjectGuid>
-    <RootNamespace>My16ProcessPriority2</RootNamespace>
+    <ProjectGuid>{7675ED93-FD09-4403-BC33-04D5F9136351}</ProjectGuid>
+    <RootNamespace>My17UnsyncThreads</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

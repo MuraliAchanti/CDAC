@@ -17,9 +17,11 @@ int main()
 		cout << "Could not create a Thread" << endl;
 	else
 	{
-		WaitForSingleObject(hThread, INFINITE);
+		//WaitForSingleObject(hThread, INFINITE);
 	}
 	DWORD dwExitCode;
+	TerminateThread(hThread, 1001010);
+	Sleep(2000);
 	GetExitCodeThread(hThread, &dwExitCode);
 	cout << "The Exit Code is - " << dwExitCode;
 	system("pause");
@@ -28,9 +30,10 @@ DWORD WINAPI ThreadFunction(LPVOID lpParam)
 {
 	cout << "----In Thread----" << endl;
 	cout << "Parameters passed to Thread are - " << (char *)lpParam << endl;
-	DWORD ExitCode;
-	cout << "Enter the exit code to be passed to primary process" << endl;
-	cin >> ExitCode;
-	ExitThread(ExitCode);
+	Sleep(5000);
+	//DWORD ExitCode;
+	//cout << "Enter the exit code to be passed to primary process" << endl;
+	//cin >> ExitCode;
+	//ExitThread(ExitCode);
 	return 0;
 }

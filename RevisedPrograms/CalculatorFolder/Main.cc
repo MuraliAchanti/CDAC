@@ -189,17 +189,17 @@ class _StackInt_
 };
 int main()
 {
-    char temp[100];
+    char input_string[100];
     cout<<"Enter the string";
-    cin>>temp;
+    cin>>input_string;
     char result[100];
     _Stack_ s(10); 
     int curr = 0;
     char ch;
     int k = 0;
-    for(int i = 0;i<strlen(temp);i++)
+    for(int i = 0;i<strlen(input_string);i++)
     {
-        ch = temp[i];
+        ch = input_string[i];
         if(isdigit(ch) || isalpha(ch))
         {
             result[k++] = ch;
@@ -241,15 +241,16 @@ int main()
     }
     while(!s.isEmpty())
     {   
-       //cout<<"7 - "<<ch<<"\n";
+    //cout<<"7 - "<<ch<<"\n";
         result[k++] = s.Pop();
     }
     result[k] = '\0';
+    cout<<"String - "<<result<<endl;
     _StackInt_ s1(10); 
-    for(int i=0;i<strlen(temp);i++)
+    for(int i=0;i<strlen(result);i++)
     {   
         char ch;
-        ch = temp[i];
+        ch = result[i];
         if(isdigit(ch) && !s1.isFull()) 
         {
             s1.Push(ch - '0');  
@@ -257,14 +258,14 @@ int main()
         else
         {   
             int a = s1.Pop();
-            int b = s.Pop();
+            int b = s1.Pop();
             switch(ch)
             {
                 case '+' : s1.Push(add(a,b));
                             break;
                 case '-' : s1.Push(substract(b,a));
                             break;
-                case '*' : s1.Push(multiply(a,b));
+                case '*' : s1.Push(multiply(b,a));
                             break;
                 case '/' : s1.Push(divide(b,a));
                             break;
@@ -272,4 +273,4 @@ int main()
         }
     }
     cout<<"Result - "<<s1.Pop();
-} 
+}

@@ -1,6 +1,7 @@
 //strrev,strcpy,strcat,strcmp
 #include<iostream>
 using namespace std;
+#define SIZE 100
 void SWAP(char *a,char *b)
 {
     char temp = *a;
@@ -49,7 +50,7 @@ int main()
     int choice;
     do
     {
-    char input_string[100];
+    char input_string[SIZE];  
     printf("1.String Reverse\n2.String Copy\n3.String Concatenate\n4.String Compare\n5.Quit");
     cin>>choice;
     switch(choice)
@@ -58,7 +59,7 @@ int main()
                cin>>input_string;
                cout<<STRREV(input_string)<<endl;
                break;   
-        case 2:char input_string1[100];
+        case 2:char input_string1[SIZE];
                cout<<"String Copy"<<endl;
                cout<<"First String is - "<<endl;
                cin>>input_string;

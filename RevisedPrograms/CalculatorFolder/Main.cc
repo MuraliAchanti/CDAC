@@ -5,6 +5,7 @@ int multiply(int a,int b);
 int substract(int a,int b);
 float divide(int a,int b);
 using namespace std;
+#define SIZE 100
 class _Stack_
 {
     struct sta
@@ -189,10 +190,10 @@ class _StackInt_
 };
 int main()
 {
-    char input_string[100];
+    char input_string[SIZE];
     cout<<"Enter the string";
     cin>>input_string;
-    char result[100];
+    char result[SIZE];
     _Stack_ s(10); 
     int curr = 0;
     char ch;

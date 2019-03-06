@@ -1,15 +1,17 @@
 #include<iostream>
 using namespace std;
+#define SIZE 100
 char* ExpandString(char *CompressedString)
 {   
+    int flag = 0;
     char *expanded = NULL;
     int len = strlen(CompressedString);
-    if(CompressedString[len -1] == '-' || CompressedString[0] == '-')
+    if(CompressedString[len -1] == '-' || CompressedString[0] == '-')//Last and first indices are hyphens
     {
         cout<<"Invalid String"<<endl;
         return NULL;
     }
-    if(1)
+    if(1)//Consecutive hyphens
     {
         for(int i=0;i<len;i++)
         {
@@ -20,9 +22,57 @@ char* ExpandString(char *CompressedString)
             }
         }
     }
-    if(1)  
+    if(1)//Negative Numbers
+    {   
+        int flag = 0;
+        int index = 0;
+        for(int i=0;i<len;i++)
+        {   
+            if(CompressedString[i] == '-' && flag == 0)
+            {
+                flag = 1;
+                index = i+1;
+            }
+            else if(CompressedString[i] == '-' && flag == 1)
+            {
+                if((i-1) != index)
+                {
+                    flag = 0;
+                }
+                else
+                {
+                    return NULL;
+                }
+                
+            }
+        }
+    }
+    if(1)//Lower and Upper Check
     {
-        expanded = new char[100];
+        for(int i = 0;i<len;i++)
+        {
+            if(CompressedString[i] == '-')
+            {   
+                if(isalpha(CompressedString[i-1]) && isalpha(CompressedString[i+1])) 
+                {
+                    if((CompressedString[i-1]>64 && CompressedString[i-1]<91) && (CompressedString[i+1]>64 && CompressedString[i+1]<91)) 
+                    {
+                    }
+                    else if((CompressedString[i-1]>96 && CompressedString[i-1]<123) && (CompressedString[i+1]>96 && CompressedString[i+1]<123)) 
+                    {
+
+                    }
+                    else
+                    {
+                        return NULL;
+                    }
+                }                
+            }
+        }
+    }
+    if(1)//Expansion
+    {
+        expanded = new char[SIZE];
         int i;
         int k = 0;
         for(i=0;i<strlen(CompressedString);i++)
@@ -33,17 +83,30 @@ char* ExpandString(char *CompressedString)
                      || (isalpha(CompressedString[i-1]) && isalpha(CompressedString[i+1])))
                 {
                 int j = 0; 
-                for(j = CompressedString[i-1]+1;j<CompressedString[i+1];j++,k++)
+                if(CompressedString[i-1] > CompressedString[i+1]) 
                 {
-                    expanded[k] = j;
+                    for(j = CompressedString[i+1]+1;j<CompressedString[i-1];j++,k++)
+                    {
+                        expanded[k] = j;
+                    }
                 }
+                else if(CompressedString[i-1] == CompressedString[i+1])
+                {
+                    i++;
+                }
+                else if(CompressedString[i-1] < CompressedString[i+1])
+                {
+                    for(j = CompressedString[i-1]+1;j<CompressedString[i+1];j++,k++)
+                    {
+                        expanded[k] = j;
+                    }
                 }
                 else
                 {
-                    cout<<"Invalid String"<<endl;
+                    //cout<<"Invalid String"<<endl;
                     return NULL;
+                }   
                 }
-                
             }
             else
             {
@@ -51,12 +114,13 @@ char* ExpandString(char *CompressedString)
                 k++;
             }   
         }
-    }
+        expanded[k]  = '\0';
     return expanded;
+    }
 }
 int main()
-{
-    char ShortHandString[100];
+{ 
+    char ShortHandString[SIZE];
     cout<<"Enter the String"<<endl;
     cin>>ShortHandString;
     char *output = ExpandString(ShortHandString);
@@ -64,7 +128,7 @@ int main()
         cout<<"Expanded String is - "<<output;
     else
     {
-        cout<<"Please Run Again";
+        cout<<"Error!!!Please Run Again";
     }
     
 }

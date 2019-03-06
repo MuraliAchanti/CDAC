@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1-MultiByteWideChar", "1-MultiByteWideChar\1-MultiByteWideChar.vcxproj", "{6F1DD2D7-169A-479A-8CEB-8B1A1A008C00}"
 EndProject
@@ -43,6 +43,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "18-InterLockedIncrement", "18-InterLockedIncrement\18-InterLockedIncrement.vcxproj", "{BE6026D1-25B6-49B6-81F3-7386D47CAFE9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "19-CriticalSection", "19-CriticalSection\19-CriticalSection.vcxproj", "{4C231E7B-5619-4C92-AAF9-0E0DC1DA5D53}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "20-ReaderWriterSync", "20-ReaderWriterSync\20-ReaderWriterSync.vcxproj", "{9C64D21C-0E4B-4F34-BBC7-A61E34491D9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -220,6 +222,14 @@ Global
 		{4C231E7B-5619-4C92-AAF9-0E0DC1DA5D53}.Release|x64.Build.0 = Release|x64
 		{4C231E7B-5619-4C92-AAF9-0E0DC1DA5D53}.Release|x86.ActiveCfg = Release|Win32
 		{4C231E7B-5619-4C92-AAF9-0E0DC1DA5D53}.Release|x86.Build.0 = Release|Win32
+		{9C64D21C-0E4B-4F34-BBC7-A61E34491D9F}.Debug|x64.ActiveCfg = Debug|x64
+		{9C64D21C-0E4B-4F34-BBC7-A61E34491D9F}.Debug|x64.Build.0 = Debug|x64
+		{9C64D21C-0E4B-4F34-BBC7-A61E34491D9F}.Debug|x86.ActiveCfg = Debug|Win32
+		{9C64D21C-0E4B-4F34-BBC7-A61E34491D9F}.Debug|x86.Build.0 = Debug|Win32
+		{9C64D21C-0E4B-4F34-BBC7-A61E34491D9F}.Release|x64.ActiveCfg = Release|x64
+		{9C64D21C-0E4B-4F34-BBC7-A61E34491D9F}.Release|x64.Build.0 = Release|x64
+		{9C64D21C-0E4B-4F34-BBC7-A61E34491D9F}.Release|x86.ActiveCfg = Release|Win32
+		{9C64D21C-0E4B-4F34-BBC7-A61E34491D9F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

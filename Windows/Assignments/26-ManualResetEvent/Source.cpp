@@ -41,6 +41,10 @@ int main()
 	hThreads[1] = hThread2;
 	hThreads[2] = hThread3;
 	WaitForMultipleObjects(3, hThreads, TRUE, INFINITE);
+	CloseHandle(hThread1);
+	CloseHandle(hThread2);
+	CloseHandle(hThread3);
+	CloseHandle(hFile);
 	system("pause");
 }
 DWORD WINAPI CountWords(LPVOID lpParam)

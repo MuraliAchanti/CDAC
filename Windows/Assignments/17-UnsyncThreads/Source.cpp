@@ -32,6 +32,9 @@ int main()
 		}
 		cout << "The Final Balance is - " << balance << endl;
 	} while (balance == 200000);
+	Sleep(500);
+	CloseHandle(hThread1);
+	CloseHandle(hThread2);
 	system("pause");
 }
 DWORD WINAPI ThreadFunction(LPVOID lpParam)

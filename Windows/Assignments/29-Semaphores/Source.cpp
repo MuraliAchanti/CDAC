@@ -1,9 +1,9 @@
 #include<iostream>
 #include<windows.h>
+using namespace std;
 #define THREADCOUNT 4
 #define SEM_COUNT 2
 HANDLE ghSemaphore;
-using namespace std;
 DWORD WINAPI ThreadFunction(LPVOID lpParam);
 int main()
 {

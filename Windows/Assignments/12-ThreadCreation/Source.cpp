@@ -15,6 +15,7 @@ int main()
 	{
 		cout << "Could not Create a Thread" << endl;
 	}
+	CloseHandle(hThread);
 	system("pause");
 }
 DWORD WINAPI ThreadFunction(LPVOID lpParam)

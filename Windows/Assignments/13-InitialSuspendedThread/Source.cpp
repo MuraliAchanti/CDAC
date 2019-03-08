@@ -18,6 +18,8 @@ int main()
 	cout << "Wait for 5 Seconds" << endl;
 	Sleep(5000);
 	ResumeThread(hThread);
+	Sleep(500);
+	CloseHandle(hThread);
 	system("pause");
 }
 DWORD WINAPI ThreadFunction(LPVOID lpParam)

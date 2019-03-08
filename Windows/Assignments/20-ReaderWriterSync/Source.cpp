@@ -36,6 +36,8 @@ int main()
 		}
 	}
 	WaitForMultipleObjects(6, hThreads, TRUE, INFINITE);
+	for (int i = 0; i < 6; i++)
+		CloseHandle(hThreads[i]);
 	system("pause");
 }
 DWORD WINAPI ReaderFunction(LPVOID lpParam)

@@ -31,8 +31,10 @@ int main()
 	hThread3 = CreateThread(NULL, 0, ThreadFunction3, NULL, 0, &dwThreadId);
 	cout << "Thread 3 - " << GetThreadId(hThread3);
 	CheckReturn(WaitForSingleObject(hThread3, 1000));
+	CloseHandle(hThread1);
+	CloseHandle(hThread2);
+	CloseHandle(hThread3);
 	system("pause");
-
 }
 DWORD ThreadFunction1(LPVOID lpParam)
 {

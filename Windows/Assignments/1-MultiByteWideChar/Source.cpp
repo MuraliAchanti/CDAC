@@ -28,5 +28,7 @@ int main()
 		wcout << "Conversion to ANSI Failed"<<endl;
 	else
 		cout << "Corresponding ANSI Character String for Wide Character is -" << ConvertedWCHAR << endl;
+	delete(ConvertedWCHAR);
+	delete(ConvertedANSI);
 	system("pause");
 }

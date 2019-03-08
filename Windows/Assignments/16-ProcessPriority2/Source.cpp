@@ -17,6 +17,7 @@ int main()
 	if (hThread == NULL)
 		cout << "Creation of Thread Failed" << endl;
 	WaitForSingleObject(hThread, INFINITE);
+	CloseHandle(hThread);
 }
 DWORD WINAPI ThreadFunction(LPVOID lpParam) 
 {

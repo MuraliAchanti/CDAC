@@ -28,6 +28,9 @@ int main()
 		cout << "Exit Code Thread 2 - " << dwReturn << endl;
 	}
 	cout << "The Final Balance is - " << balance << endl;
+	//WaitForMultipleObjects(2, hThreads, TRUE, INFINITE);
+	CloseHandle(hThread1);
+	CloseHandle(hThread2);
 	system("pause");
 }
 DWORD WINAPI ThreadFunction(LPVOID lpParam)

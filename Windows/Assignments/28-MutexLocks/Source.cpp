@@ -25,6 +25,8 @@ int main()
 	for (int i = 0; i < THREADCOUNT; i++)
 		CloseHandle(hThreads[i]);
 	CloseHandle(hMutex);
+	for (int i = 0; i < 8; i++)
+		CloseHandle(hThreads[i]);
 	system("pause");
 }
 DWORD WINAPI ThreadFunction(LPVOID lpParam)

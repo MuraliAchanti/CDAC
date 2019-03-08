@@ -31,5 +31,6 @@ int main()
 	}
 	else
 		cout << "Failed";
+	delete(buffer);
 	system("pause");
 }

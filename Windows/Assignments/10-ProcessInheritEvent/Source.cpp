@@ -33,5 +33,6 @@ int main(int argc,char *argv[])
 			CloseHandle(pi.hThread);
 		}
 	}
+	CloseHandle(hEvent);
 	system("pause");
 }

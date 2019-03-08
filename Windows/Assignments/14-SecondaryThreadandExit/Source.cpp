@@ -19,6 +19,8 @@ int main()
 	DWORD dwExitCode;
 	GetExitCodeThread(hThread, &dwExitCode);
 	cout << "The Exit Code is - " << dwExitCode;
+	Sleep(500);
+	CloseHandle(hThread);
 	system("pause");
 }
 DWORD WINAPI ThreadFunction(LPVOID lpParam)

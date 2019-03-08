@@ -1,7 +1,7 @@
 #include<iostream>
 #include<windows.h>
 using namespace std;
-DWORD WINAPI ThreadFunction1(LPVOID lpParam);
+DWORD WINAPI ThreadFunction1(LPVOID lpParam); 
 DWORD WINAPI ThreadFunction2(LPVOID lpParam);
 DWORD WINAPI ThreadFunction3(LPVOID lpParam);
 void CheckReturn(DWORD returnvalue)
@@ -34,17 +34,17 @@ int main()
 	system("pause");
 
 }
-DWORD ThreadFunction1(LPVOID lpParam)
+DWORD WINAPI ThreadFunction1(LPVOID lpParam)
 {
 	cout << "In Thread 1" << endl;
 	return 0;
 }
-DWORD ThreadFunction2(LPVOID lpParam)
+DWORD WINAPI ThreadFunction2(LPVOID lpParam)
 {
 	cout << "In Thread 2" << endl;
 	return 0;
 }
-DWORD ThreadFunction3(LPVOID lpParam)
+DWORD WINAPI ThreadFunction3(LPVOID lpParam)
 {
 	cout << "In Thread 3" << endl;
 	Sleep(2000);

@@ -8,7 +8,7 @@ char* ExpandString(char *CompressedString)
     int len = strlen(CompressedString);
     if(CompressedString[len -1] == '-' || CompressedString[0] == '-')//Last and first indices are hyphens
     {
-        cout<<"Invalid String"<<endl;
+        cout<<"First and Last Hyphens"<<endl;
         return NULL;
     }
     if(1)//Consecutive hyphens
@@ -17,7 +17,7 @@ char* ExpandString(char *CompressedString)
         {
             if(CompressedString[i] == '-' && CompressedString[i+1] == '-')
             {
-                cout<<"Invalid String"<<endl;
+                cout<<"Consecutive Hyphens"<<endl;
                 return NULL;
             }
         }
@@ -40,7 +40,8 @@ char* ExpandString(char *CompressedString)
                     flag = 0;
                 }
                 else
-                {
+                {   
+                    cout<<"Negative Number"<<endl;
                     return NULL;
                 }
                 
@@ -63,10 +64,28 @@ char* ExpandString(char *CompressedString)
 
                     }
                     else
-                    {
+                    {   
+                        cout<<"Upper and Lower Mismatch"<<endl;
                         return NULL;
                     }
                 }                
+            }
+        }
+    }
+    if(1)
+    {
+        for(int i = 0;i<strlen(CompressedString);i++)
+        {
+            if(CompressedString[i] == '-')
+            {
+                if((i-2)>=0)
+                {
+                    if(CompressedString[i-2] == '.')
+                    {   
+                        cout<<"Floating Type Input"<<endl;
+                        return NULL;
+                    }
+                } 
             }
         }
     }

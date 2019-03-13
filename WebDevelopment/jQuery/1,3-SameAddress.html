@@ -1,0 +1,85 @@
+<html>
+    <script src="jquery-3.3.1.js"></script>
+    <script src="1,3-sameas.js"></script>
+    <style>
+        .outer-container
+        {
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top:-12em;
+            margin-left:-12em;
+        }
+        .form-inner-container
+        {
+            border:2px solid black;
+            width:12em;
+            height:12em;
+            padding:1em;
+            float: left;
+            margin-right:0.5em;
+            margin-bottom:2em;
+        }
+        #button-div
+        {
+            text-align: center;
+        }
+    </style>
+    <body>
+        <div class="outer-container">
+            <div class="form-inner-container">
+                <form id="form1">
+                    <label>House No</label>
+                    <input type="text" name="house-no"/><br>
+                    <label>Locality</label>
+                    <input type="text" name="locality"/><br>
+                    <label>District</label>
+                    <select>
+                        <option value="Khammam">Khammam</option>
+                        <option value="Nizamabad">Nizamabad</option>
+                        <option value="Chitoor">Chitoor</option>
+                        <option value="Karimnagar">Karimnagar</option>
+                    </select><br>
+                    <label>State</label>
+                    <select>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Karnataka">Karnataka</option>
+                    </select><br>
+                    <label>Pin Code</label>
+                    <input type="text" name="PinCode"/>
+                </form>
+            </div>
+            <div class="form-inner-container">
+                    <form id="form2">
+                        <label>House No</label>
+                        <input type="text" name="house-no"/><br>
+                        <label>Locality</label>
+                        <input type="text" name="locality"/><br>
+                        <label>District</label>
+                        <select>
+                            <option value="Khammam">Khammam</option>
+                            <option value="Nizamabad">Nizamabad</option>
+                            <option value="Chitoor">Chitoor</option>
+                            <option value="Karimnagar">Karimnagar</option>
+                        </select><br>
+                        <label>State</label>
+                        <select>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Karnataka">Karnataka</option>
+                        </select><br>
+                        <label>Pin Code</label>
+                        <input type="text" name="PinCode"/><br>
+                    </form>
+                    <label>Same as Current Address </label>
+                    <input type="checkbox" name="Same" id="same-check-box"/>
+                </div>
+                <div id="button-div">
+                    <input type="button" name="Reset" id="ToggleButton" value="Hide"/>
+                </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <label>Operand 1</label>
+        <input type="text" id="operand1"/>
+        <label>Operand 2</label>
+        <input type="text" id="operand2"/>
+        <input  style="margin-left:5px;" type="button"  id="button" value = "Result" onclick="fun()"/>
+        <br>
+        <label>Result</label><br>
+        <p id="Result"></p>
+        <script>
+            function fun()
+            {
+            var a = document.getElementById('operand1').value - 0;
+            var b = document.getElementById('operand2').value - 0;
+            document.getElementById('Result').innerHTML = "";
+            document.getElementById('Result').innerHTML = a+b;
+            }
+            window.onload = function(){
+            setTimeout(function(){
+            var t = performance.timing;
+            console.log(t.loadEventEnd - t.responseEnd);
+            }, 0);
+            }
+        </script>
+    </body>
+</html>
